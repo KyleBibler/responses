@@ -1,0 +1,27 @@
+{
+  "name": "responses",
+  "version": "1.0.0",
+  "description": "Application that allows users to create lobbies where they can put up questions that other users can answer. These lobbies can be public or private, along with other customization options.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "(git://github.com/KyleBibler/responses.git)"
+  },
+  "keywords": [
+    "npm"
+  ],
+  "author": "Kyle Bibler",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "bcrypt": "^0.8.7",
+    "body-parser": "^1.15.2",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.14.0",
+    "mongodb": "^2.1.18",
+    "mongoose": "^4.5.1",
+    "pug": "^2.0.0-beta3"
+  }
+}

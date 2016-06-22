@@ -1,0 +1,17 @@
+extends layout
+
+mixin lobby(data)
+	a(href='/lobbies/'+data.id, class='lobby-link') #{data.name}
+		.lobby
+	br
+
+block content
+	h1 Response Creator Lobbies
+	if errors
+		each error in errors
+			+error(error)
+	each lobby in lobbies
+		+lobby(lobby)
+	br
+	a(href="/lobbies/create-lobby") Create Lobby
+

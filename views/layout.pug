@@ -1,0 +1,13 @@
+doctype html
+html
+	head
+		title= title
+		link(rel='stylesheet', href='/static/stylesheets/style.css')
+		link(rel='stylesheet', href='/static/stylesheets/bootstrap.min.css')
+		link(rel='stylesheet', href='/static/stylesheets/font-awesome/css/font-awesome.min.css')
+	body
+	mixin error(errorMessage)
+		div(class="alert alert-danger")
+			span=errorMessage
+	block content
+	script(src='/static/js/libraries/jquery-3.0.0.min.js')

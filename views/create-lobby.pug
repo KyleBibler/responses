@@ -1,0 +1,68 @@
+extends layout
+
+block content
+	link(rel='stylesheet', href='/static/stylesheets/views/create-lobby.css')
+	if errors
+		each error in errors
+			+error(error)
+	h1 Create a lobby 	
+	form(name="create-lobby", method="post", action="/lobbies/create-lobby")
+		div(class="form-group")
+			label Lobby name: 
+			input(type="text", name="name", placeholder="Lobby Name", class="form-control")
+		div(class="form-group")
+			label Lobby type: 
+				i(class="fa fa-question-circle-o")
+			div(class="radio")
+				label
+					input(type="radio" name="isPublic" value="true" onclick="checkPublic()" checked=true)
+					| Public
+			div(class="radio")
+				label
+					input(type="radio" name="isPublic" value="false" onclick="checkPublic()")
+					| Private
+		div(class="private-options")
+			div(class="form-group")
+				label Lobby Password: 
+				input(id="passwordForm" type="password", name="pw", placeholder="Password", class="form-control" disabled)
+			div(class="checkbox")
+				label
+					input(type="checkbox", name="showInList") 
+					| Show in main lobby list
+			div(class="checkbox")
+				label
+					input(type="checkbox", name="onlyAllowFriends") 
+					| Only allow friends to join lobby (NYI)
+		label Response Options
+		div(class="checkbox")
+			label
+				input(type="checkbox", name="showAnswers")
+				| Show answers to other members of the lobby
+		div(class="checkbox")
+			label
+				input(id="allowAnonymous" type="checkbox", name="allowAnonymous" onclick="checkAnonymous()") 
+				| Allow anonymous answers
+		div(class="checkbox")
+			label
+				input(id="allAnonymous" type="checkbox", name="forceAnonymous" disabled)
+				| Force all answers to be anonymous
+		
+		button(type="submit" class="btn btn-success") Create Lobby
+
+	script(type='text/javascript').
+		var checkPublic = function() {
+			var showPrivateOptions = $('input[name="isPublic"]:checked').val() === "false",
+				privateOptionEl = $('.private-options');
+			if(showPrivateOptions) { 
+				privateOptionEl.slideDown(150); 
+			} else { 
+				privateOptionEl.slideUp(150); 
+			}
+			document.getElementById("passwordForm").disabled = !showPrivateOptions;
+		};		
+		var checkAnonymous = function() {
+			document.getElementById("allAnonymous").disabled = !document.getElementById("allowAnonymous").checked;
+			document.getElementById("allAnonymous").checked = false;
+		}
+
+

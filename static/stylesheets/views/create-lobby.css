@@ -1,0 +1,9 @@
+.private-options {
+	display: none;
+}
+.fa-question-circle-o {
+	cursor: pointer;
+}
+.fa-question-circle-o:hover {
+	color: blue;
+}
